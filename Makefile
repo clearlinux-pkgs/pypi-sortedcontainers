@@ -1,5 +1,5 @@
 PKG_NAME := sortedcontainers
-URL = https://files.pythonhosted.org/packages/b9/30/accbf5c09c5fa25a3d5f762761e0d7ece6fdb12f2a9c43b840f73cef43ef/sortedcontainers-2.0.5.tar.gz
+URL = https://files.pythonhosted.org/packages/29/e0/135df2e733790a3d3bcda970fd080617be8cea3bd98f411e76e6847c17ef/sortedcontainers-2.1.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
