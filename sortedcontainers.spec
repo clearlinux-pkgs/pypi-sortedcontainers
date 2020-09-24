@@ -4,7 +4,7 @@
 #
 Name     : sortedcontainers
 Version  : 2.2.2
-Release  : 14
+Release  : 15
 URL      : https://files.pythonhosted.org/packages/3b/fb/48f6fa11e4953c530b09fa0f2976df5234b0eaabcd158625c3e73535aeb8/sortedcontainers-2.2.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/3b/fb/48f6fa11e4953c530b09fa0f2976df5234b0eaabcd158625c3e73535aeb8/sortedcontainers-2.2.2.tar.gz
 Summary  : Sorted Containers -- Sorted List, Sorted Dict, Sorted Set
