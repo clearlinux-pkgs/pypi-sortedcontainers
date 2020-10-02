@@ -1,9 +1,6 @@
 # This file contains recursive sources that require this package
 distributed
-fastnumbers
 hypothesis
 intervaltree
-natsort
 openvswitch
-ovs
 python-zstandard

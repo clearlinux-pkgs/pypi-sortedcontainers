@@ -4,12 +4,13 @@
 #
 Name     : sortedcontainers
 Version  : 2.2.2
-Release  : 15
+Release  : 16
 URL      : https://files.pythonhosted.org/packages/3b/fb/48f6fa11e4953c530b09fa0f2976df5234b0eaabcd158625c3e73535aeb8/sortedcontainers-2.2.2.tar.gz
 Source0  : https://files.pythonhosted.org/packages/3b/fb/48f6fa11e4953c530b09fa0f2976df5234b0eaabcd158625c3e73535aeb8/sortedcontainers-2.2.2.tar.gz
 Summary  : Sorted Containers -- Sorted List, Sorted Dict, Sorted Set
 Group    : Development/Tools
 License  : Apache-2.0
+Requires: sortedcontainers-license = %{version}-%{release}
 Requires: sortedcontainers-python = %{version}-%{release}
 Requires: sortedcontainers-python3 = %{version}-%{release}
 BuildRequires : buildreq-distutils3
@@ -29,6 +30,14 @@ BuildRequires : tox-python
         documentation and benchmarking.
         
         In Python, we can do better. And we can do it in pure-Python!
+
+%package license
+Summary: license components for the sortedcontainers package.
+Group: Default
+
+%description license
+license components for the sortedcontainers package.
+
 
 %package python
 Summary: python components for the sortedcontainers package.
@@ -58,7 +67,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1591629748
+export SOURCE_DATE_EPOCH=1601675711
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
 export FCFLAGS="$FFLAGS -fno-lto "
@@ -71,10 +80,12 @@ python3 setup.py build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test
+PYTHONPATH=%{buildroot}$(python -c "import sys; print(sys.path[-1])") python setup.py test || :
 %install
 export MAKEFLAGS=%{?_smp_mflags}
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/sortedcontainers
+cp %{_builddir}/sortedcontainers-2.2.2/LICENSE %{buildroot}/usr/share/package-licenses/sortedcontainers/e79dc019b36c084ccc00738699f7c50030a3a0b6
 python3 -tt setup.py build  install --root=%{buildroot}
 echo ----[ mark ]----
 cat %{buildroot}/usr/lib/python3*/site-packages/*/requires.txt || :
@@ -82,6 +93,10 @@ echo ----[ mark ]----
 
 %files
 %defattr(-,root,root,-)
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/sortedcontainers/e79dc019b36c084ccc00738699f7c50030a3a0b6
 
 %files python
 %defattr(-,root,root,-)
